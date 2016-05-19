@@ -44,6 +44,13 @@ node default {
 
   include ::mysql::client
 
+  class { 'composer':
+    command_name => 'composer',
+    target_dir => '/usr/local/bin',
+    auto_update  => true,
+    require => Package['php5'],
+  }
+
   package { 'postfix':
     ensure => 'present',
   }
