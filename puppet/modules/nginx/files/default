@@ -1,6 +1,6 @@
 server {
     listen 80;
-    root /var/www/project/public;
+    root /var/www/project/pilot;
     index index.php index.html index.htm;
     server_name lemp-stack.local;
 
