@@ -1,4 +1,12 @@
 node default {
+  exec { 'apt-get update':
+    command => '/usr/bin/apt-get update'
+  }
+
+  Exec["apt-get update"] -> Package <| |>
+
+  include devpkg
+
   class { 'nginx':
     file => 'default',
   }

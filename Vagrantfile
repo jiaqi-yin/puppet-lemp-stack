@@ -13,7 +13,7 @@ Vagrant.configure(2) do |config|
     vbox.name = "lemp-stack"
   end
 
-  config.vm.provision "shell", inline: "apt-get update"
+  #config.vm.provision "shell", inline: "apt-get update"
 
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "puppet/manifests"
