@@ -20,6 +20,7 @@ class php {
     'php5-common',
     'php5-memcache',
     'php5-mysql',
+    'php5-intl',
   ]
 
   package { $enhancers:

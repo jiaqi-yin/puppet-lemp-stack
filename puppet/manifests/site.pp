@@ -18,6 +18,10 @@ node default {
       ensure => 'present',
       charset => 'utf8',
     },
+    'iris_sf3_dev' => {
+      ensure => 'present',
+      charset => 'utf8',
+    },
   }
 
   $users = {
@@ -37,6 +41,13 @@ node default {
       options    => ['GRANT'],
       privileges => ['ALL'],
       table      => 'lemp.*',
+      user       => 'lemp@localhost',
+    },
+    'lemp@localhost/iris_sf3_dev.*' => {
+      ensure     => 'present',
+      options    => ['GRANT'],
+      privileges => ['ALL'],
+      table      => 'iris_sf3_dev.*',
       user       => 'lemp@localhost',
     },
   }
@@ -71,4 +82,6 @@ node default {
     ip => '127.0.0.1',
     host_aliases => 'localhost',
   }
+
+  include iris_sf3
 }
