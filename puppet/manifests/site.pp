@@ -13,6 +13,24 @@ node default {
 
   include php
 
+  augeas { '/etc/php5/cli/php.ini':
+    notify  => Service['nginx'],
+    require => Package['php5-cli'],
+    context => '/files/etc/php5/cli/php.ini/PHP',
+    changes => [
+      "set date.timezone Australia/Melbourne",
+    ];
+  }
+
+  augeas { '/etc/php5/fpm/php.ini':
+    notify  => Service['nginx'],
+    require => Package['php5-fpm'],
+    context => '/files/etc/php5/fpm/php.ini/PHP',
+    changes => [
+      "set date.timezone Australia/Melbourne",
+    ];
+  }
+
   $databases = {
     'lemp' => {
       ensure => 'present',
