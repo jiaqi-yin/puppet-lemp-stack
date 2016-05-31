@@ -13,3 +13,6 @@
 [submodule "puppet/modules/wget"]
 	path = puppet/modules/wget
 	url = git@github.com:maestrodev/puppet-wget.git
+[submodule "puppet/modules/augeas"]
+	path = puppet/modules/augeas
+	url = git@github.com:camptocamp/puppet-augeas.git
