@@ -4,7 +4,7 @@ class nginx ($file = 'default') {
     ensure => 'present',
   }
 
-  file { '/etc/nginx/sites-available/default':
+  file { "/etc/nginx/sites-available/${file}":
     source => "puppet:///modules/nginx/${file}",
     owner => 'root',
     group => 'root',

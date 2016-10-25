@@ -11,21 +11,21 @@ node default {
     file => 'default',
   }
 
-  include php
+  include php7
 
-  augeas { '/etc/php5/cli/php.ini':
+  augeas { '/etc/php/7.0/cli/php.ini':
     notify  => Service['nginx'],
-    require => Package['php5-cli'],
-    context => '/files/etc/php5/cli/php.ini/PHP',
+    require => Package['php7.0-cli'],
+    context => '/files/etc/php/7.0/cli/php.ini/Date/date.timezone',
     changes => [
       "set date.timezone Australia/Melbourne",
     ];
   }
 
-  augeas { '/etc/php5/fpm/php.ini':
+  augeas { '/etc/php/7.0/fpm/php.ini':
     notify  => Service['nginx'],
-    require => Package['php5-fpm'],
-    context => '/files/etc/php5/fpm/php.ini/PHP',
+    require => Package['php7.0-fpm'],
+    context => '/files/etc/php/7.0/fpm/php.ini/Date/date.timezone',
     changes => [
       "set date.timezone Australia/Melbourne",
     ];
@@ -33,10 +33,6 @@ node default {
 
   $databases = {
     'lemp' => {
-      ensure => 'present',
-      charset => 'utf8',
-    },
-    'iris_sf3_dev' => {
       ensure => 'present',
       charset => 'utf8',
     },
@@ -61,13 +57,6 @@ node default {
       table      => 'lemp.*',
       user       => 'lemp@localhost',
     },
-    'lemp@localhost/iris_sf3_dev.*' => {
-      ensure     => 'present',
-      options    => ['GRANT'],
-      privileges => ['ALL'],
-      table      => 'iris_sf3_dev.*',
-      user       => 'lemp@localhost',
-    },
   }
 
   class { '::mysql::server':
@@ -85,7 +74,7 @@ node default {
     command_name => 'composer',
     target_dir => '/usr/local/bin',
     auto_update  => true,
-    require => Package['php5'],
+    require => Package['php7.0'],
   }
 
   package { 'postfix':
@@ -100,6 +89,4 @@ node default {
     ip => '127.0.0.1',
     host_aliases => 'localhost',
   }
-
-  include iris_sf3
 }
