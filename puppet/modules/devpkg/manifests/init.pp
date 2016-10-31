@@ -12,4 +12,10 @@ class devpkg {
     creates => '/usr/local/bin/symfony',
     require => Package['curl'],
   }
+
+  exec { 'drupal-console':
+    command => "/usr/bin/curl https://drupalconsole.com/installer -L -o /usr/local/bin/drupal && chmod a+x /usr/local/bin/drupal",
+    creates => '/usr/local/bin/drupal',
+    require => Package['curl'],
+  }
 }
