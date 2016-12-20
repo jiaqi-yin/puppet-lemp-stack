@@ -18,4 +18,8 @@ class devpkg {
     creates => '/usr/local/bin/drupal',
     require => Package['curl'],
   }
+
+  drush::drush { 'drush-8.1.8':
+    version => '8.1.8',
+  }
 }
