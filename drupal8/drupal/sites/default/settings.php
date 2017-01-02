@@ -285,7 +285,7 @@ $config_directories = array();
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = 'KZ0Xpxjr-7GTYgIStbHyp-egQIXN6dUlIs6OvuT9vPledjfNwW30FCFguRxaDIcobgNjqrnBnA';
+$settings['hash_salt'] = '4g1ijUE7gw22ravnCA1rHcLrXWLFJJ-C1ae8KNNv_9UKH-BAabt7zAXJGWkYEgfcHDh6sZxp6Q';
 
 /**
  * Deployment identifier.
@@ -723,9 +723,6 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  * will allow the site to run off of all variants of example.com and
  * example.org, with all subdomains included.
  */
-$settings['trusted_host_patterns'] = array(
-  '^drupal8\.dev$',
-);
 
 /**
  * The default list of directories that will be ignored by Drupal's file API.
@@ -767,4 +764,4 @@ $databases['default']['default'] = array (
   'driver' => 'mysql',
 );
 $settings['install_profile'] = 'standard';
-$config_directories['sync'] = 'sites/default/files/config_Zrgf448HhbAjj_mq1jZv37AFY4GSnyoeYyKG_GvAHNWs83t3qCMCAdZdLwmSdkXZq86yRtXqUQ/sync';
+$config_directories['sync'] = 'sites/default/files/config_onjK4kTTPCwJ5UDpEKT-btGoHQefhNG-hg8SsBuA3ppUQzylmxcKs1xGxVG0rZ-KalOdLFRJhA/sync';
