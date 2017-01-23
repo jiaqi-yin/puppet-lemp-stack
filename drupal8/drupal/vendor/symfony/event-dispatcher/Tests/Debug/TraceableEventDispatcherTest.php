@@ -73,16 +73,6 @@ class TraceableEventDispatcherTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(123, $tdispatcher->getListenerPriority('foo', $listeners[0]));
     }
 
-    public function testGetListenerPriorityReturnsZeroWhenWrappedMethodDoesNotExist()
-    {
-        $dispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcherInterface')->getMock();
-        $traceableEventDispatcher = new TraceableEventDispatcher($dispatcher, new Stopwatch());
-        $traceableEventDispatcher->addListener('foo', function () {}, 123);
-        $listeners = $traceableEventDispatcher->getListeners('foo');
-
-        $this->assertSame(0, $traceableEventDispatcher->getListenerPriority('foo', $listeners[0]));
-    }
-
     public function testAddRemoveSubscriber()
     {
         $dispatcher = new EventDispatcher();
@@ -130,7 +120,7 @@ class TraceableEventDispatcherTest extends \PHPUnit_Framework_TestCase
 
     public function testLogger()
     {
-        $logger = $this->getMockBuilder('Psr\Log\LoggerInterface')->getMock();
+        $logger = $this->getMock('Psr\Log\LoggerInterface');
 
         $dispatcher = new EventDispatcher();
         $tdispatcher = new TraceableEventDispatcher($dispatcher, new Stopwatch(), $logger);
@@ -145,7 +135,7 @@ class TraceableEventDispatcherTest extends \PHPUnit_Framework_TestCase
 
     public function testLoggerWithStoppedEvent()
     {
-        $logger = $this->getMockBuilder('Psr\Log\LoggerInterface')->getMock();
+        $logger = $this->getMock('Psr\Log\LoggerInterface');
 
         $dispatcher = new EventDispatcher();
         $tdispatcher = new TraceableEventDispatcher($dispatcher, new Stopwatch(), $logger);
